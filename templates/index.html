@@ -3,30 +3,121 @@
 <!--From https://codepen.io/frytyler/pen/EGdtg-->
 <head>
   <meta charset="UTF-8">
-  <title>Ailerons Dataset</title>
+  <title>Translate</title>
   <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  
+
 </head>
 
 <body>
- <div class="login">
-	<h1>Predict Goal value</h1>
-    <p>Provide the data here in a csv file.</p>
-    <form action="{{ url_for('predict')}}" method="post" enctype = "multipart/form-data">
-    	<input type="file" name="file" required="required" />
-      <button type="submit" class="btn btn-primary btn-block btn-large">Upload</button>
-    </form>
+  <div class="container">
 
-   <br>
-   <br>
-   {{ prediction_text }}
+    <div class="left">
+      <h1>Translate to English</h1>
+        <p>Select the language to detect:</p>
+        <form action="{{ url_for('predict')}}" method="post" enctype = "multipart/form-data">
+          <select name="languages">
+            <option value="Abaza">Abaza</option>
+            <option value="Adyghe">Adyghe</option>
+            <option value="Afrikaans">Afrikaans</option>
+            <option value="Angika">Angika</option>
+            <option value="Arabic">Arabic</option>
+            <option value="Assamese">Assamese</option>
+            <option value="Avar">Avar</option>
+            <option value="Azerbaijani">Azerbaijani</option>
+            <option value="Belarusian">Belarusian</option>
+            <option value="Bulgarian">Bulgarian</option>
+            <option value="Bihari">Bihari</option>
+            <option value="Bhojpuri">Bhojpuri</option>
+            <option value="Bengali">Bengali</option>
+            <option value="Bosnian">Bosnian</option>
+            <option value="Simplified Chinese">Simplified Chinese</option>
+            <option value="Traditional Chinese">Traditional Chinese</option>
+            <option value="Chechen">Chechen</option>
+            <option value="Czech">Czech</option>
+            <option value="Welsh">Welsh</option>
+            <option value="Danish">Danish</option>
+            <option value="Dargwa">Dargwa</option>
+            <option value="German">German</option>
+            <option value="Spanish">Spanish</option>
+            <option value="Estonian">Estonian</option>
+            <option value="Persian (Farsi)">Persian (Farsi)</option>
+            <option value="French">French</option>
+            <option value="Irish">Irish</option>
+            <option value="Goan Konkani">Goan Konkani</option>
+            <option value="Hindi">Hindi</option>
+            <option value="Croatian">Croatian</option>
+            <option value="Hungarian">Hungarian</option>
+            <option value="Indonesian">Indonesian</option>
+            <option value="Ingush">Ingush</option>
+            <option value="Icelandic">Icelandic</option>
+            <option value="Italian">Italian</option>
+            <option value="Japanese">Japanese</option>
+            <option value="Kabardian">Kabardian</option>
+            <option value="Kannada">Kannada</option>
+            <option value="Korean">Korean</option>
+            <option value="Kurdish">Kurdish</option>
+            <option value="Latin">Latin</option>
+            <option value="Lak">Lak</option>
+            <option value="Lezghian">Lezghian</option>
+            <option value="Lithuanian">Lithuanian</option>
+            <option value="Latvian">Latvian</option>
+            <option value="Magahi">Magahi</option>
+            <option value="Maithili">Maithili</option>
+            <option value="Maori">Maori</option>
+            <option value="Mongolian">Mongolian</option>
+            <option value="Marathi">Marathi</option>
+            <option value="Malay">Malay</option>
+            <option value="Maltese">Maltese</option>
+            <option value="Nepali">Nepali</option>
+            <option value="Newari">Newari</option>
+            <option value="Dutch">Dutch</option>
+            <option value="Norwegian">Norwegian</option>
+            <option value="Occitan">Occitan</option>
+            <option value="Pali">Pali</option>
+            <option value="Polish">Polish</option>
+            <option value="Portuguese">Portuguese</option>
+            <option value="Romanian">Romanian</option>
+            <option value="Russian">Russian</option>
+            <option value="Serbian (cyrillic)">Serbian (cyrillic)</option>
+            <option value="Serbian (latin)">Serbian (latin)</option>
+            <option value="Nagpuri">Nagpuri</option>
+            <option value="Slovak">Slovak</option>
+            <option value="Slovenian">Slovenian</option>
+            <option value="Albanian">Albanian</option>
+            <option value="Swedish">Swedish</option>
+            <option value="Swahili">Swahili</option>
+            <option value="Tamil">Tamil</option>
+            <option value="Tabassaran">Tabassaran</option>
+            <option value="Telugu">Telugu</option>
+            <option value="Thai">Thai</option>
+            <option value="Tajik">Tajik</option>
+            <option value="Tagalog">Tagalog</option>
+            <option value="Turkish">Turkish</option>
+            <option value="Uyghur">Uyghur</option>
+            <option value="Ukranian">Ukranian</option>
+            <option value="Urdu">Urdu</option>
+            <option value="Uzbek">Uzbek</option>
+            <option value="Vietnamese">Vietnamese</option>
+          </select>
+          <p>Upload the image containing text to translate:</p>
+          <input type="file" name="file" required/>
+          <button type="submit" class="btn btn-primary btn-block btn-large">Upload</button>
+        </form>
+    </div>
 
- </div>
+    <div class="right">
+    {% if image %}
+    <div class = output_img>
+      <img src = "{{ url_for('static',filename = 'output.png') }}" alt="Output">
+    </div>
+    {% endif %}
+    </div>
 
+  </div>
 
 </body>
 </html>

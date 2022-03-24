@@ -19,3 +19,4 @@ englisttohindi==4.1.0
 opencv-python-headless==4.5.2.52
 matplotlib==3.4.1
 Pillow==8.1.2
+googletrans==3.1.0a0
